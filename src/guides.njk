@@ -1,0 +1,38 @@
+---
+layout: "layouts/home.njk"
+title: "Guides"
+description: "Browse our latest travel guides by region."
+---
+
+<section class="guides-page">
+  <div class="container">
+    <h1>Guides</h1>
+
+    <div class="filter-bar">
+      <button class="filter-btn" data-region="all">All</button>
+      <button class="filter-btn" data-region="na">North America</button>
+      <button class="filter-btn" data-region="europe">Europe</button>
+      <button class="filter-btn" data-region="asia">Asia</button>
+    </div>
+
+    <div class="guides-grid">
+      {% for guide in collections.features | reverse %}
+      <div class="guide-card" data-region="{{ guide.data.region }}">
+        <img src="{{ guide.data.bannerImage }}" alt="{{ guide.data.bannerAlt }}">
+        <h3>{{ guide.data.title }}</h3>
+        <p>{{ guide.data.excerpt }}</p>
+        <a href="{{ guide.url }}" class="btn">Read More</a>
+      </div>
+      {% endfor %}
+
+      {% for guide in collections.itineraries | reverse %}
+      <div class="guide-card" data-region="{{ guide.data.region }}">
+        <img src="{{ guide.data.bannerImage }}" alt="{{ guide.data.bannerAlt }}">
+        <h3>{{ guide.data.title }}</h3>
+        <p>{{ guide.data.excerpt }}</p>
+        <a href="{{ guide.url }}" class="btn">Read More</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
